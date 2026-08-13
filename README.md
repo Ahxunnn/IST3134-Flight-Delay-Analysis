@@ -30,3 +30,45 @@ delay minutes across the US aviation network.
 ---
 
 ## Repository Structure
+
+code/
+analysis_pyspark.py — PySpark DataFrame API implementation
+analysis_sql.py — Spark SQL implementation (same analyses)
+output/
+screenshots/ — Terminal output screenshots from EMR runs
+report/
+IST3134_Group_Report.pdf — Final submission report
+
+---
+
+## How to Run
+
+### Prerequisites
+- Amazon EMR cluster (emr-7.x, 1 primary + 2 core m5.xlarge nodes)
+- Dataset uploaded to HDFS at `/user/hadoop/flights/`
+
+### Run PySpark DataFrame version
+```bash
+spark-submit --master yarn --deploy-mode client \
+  --num-executors 2 --executor-memory 1g \
+  code/analysis_pyspark.py \
+  hdfs:///user/hadoop/flights/
+```
+
+### Run Spark SQL version
+```bash
+spark-submit --master yarn --deploy-mode client \
+  --num-executors 2 --executor-memory 1g \
+  code/analysis_sql.py \
+  hdfs:///user/hadoop/flights/
+```
+
+---
+
+## Technologies Used
+
+- Amazon EMR (emr-7.x)
+- Apache Spark 3.5 (PySpark)
+- Apache Hadoop / YARN
+- Amazon S3 (output storage)
+- Python 3.11
