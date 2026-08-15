@@ -111,6 +111,22 @@ spark-submit --master yarn --deploy-mode client \
   hdfs:///user/hadoop/flights/
 ```
 
+## Visualization Scripts
+
+| Script | Charts Generated | Output |
+|---|---|---|
+| `code/visualizations.py` | 7 charts — flights, delays, causes, trend, cancellations, YoY, airports | PNG files |
+| `code/viz_yoy.py` | 3 charts — YoY overall performance, delay causes, top airlines | PNG files |
+
+### Run Visualizations
+```bash
+spark-submit --master yarn --deploy-mode client \
+  --num-executors 2 --executor-memory 1g \
+  code/visualizations.py \
+  hdfs:///user/hadoop/flights/ \
+  /home/hadoop/charts
+```
+
 ---
 
 ## Key Findings
