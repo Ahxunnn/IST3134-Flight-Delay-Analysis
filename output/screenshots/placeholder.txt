@@ -1,1 +1,0 @@
-Screenshots of PySpark terminal output will be added here after running the analysis.
